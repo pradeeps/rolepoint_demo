@@ -7,7 +7,12 @@
 <body>
     <h2>Role point Contacts Demo</h2>
     </hr>
-    <table>
+    <form method="POST" action="/search">
+        <input type="text" name="name" value="">
+        <input type="submit" value="Search Contact(s)">
+    </form>
+    </br>
+    <table id="contacts" width="75%">
         <tr>
             <th>Name</th>
             <th>Company</th>
@@ -16,7 +21,7 @@
             <th>Previous Jobs Held In</th>
         </tr>
         {% for contact in contacts %}
-            <tr>
+            <tr align="center">
                 <td>{{ contact.name }}</td>
                 <td>{{ contact.company }}</td>
                 <td>{{ contact.city }}</td>

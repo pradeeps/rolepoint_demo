@@ -35,5 +35,17 @@ def index():
     return render_template('index.html', contacts=contacts)
 
 
+@app.route('/search', methods=['POST'])
+def search():
+    name = request.form.get("name")
+
+    if not name:
+        contacts = Contacts.query.all()
+    else:
+        contacts = Contacts.query.filter(Contacts.name.contains(name)).all()
+
+    return render_template('index.html', contacts=contacts)
+
+
 if __name__ == '__main__':
     app.run()
