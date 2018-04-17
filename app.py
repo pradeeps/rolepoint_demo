@@ -3,6 +3,7 @@ import os
 from flask import Flask
 from flask import render_template
 from flask_sqlalchemy import SQLAlchemy
+from flask import request
 
 basedir = os.path.dirname(os.path.abspath(__file__))
 SQLALCHEMY_DATABASE_URI = 'sqlite:///{}'.format(os.path.join(basedir, 'contacts.db'))
@@ -28,9 +29,10 @@ class Contacts(db.Model):
         return "<Name: {}>".format(self.name)
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    contacts = Contacts.query.all()
+    return render_template('index.html', contacts=contacts)
 
 
 if __name__ == '__main__':

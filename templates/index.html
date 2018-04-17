@@ -6,5 +6,24 @@
 </head>
 <body>
     <h2>Role point Contacts Demo</h2>
+    </hr>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Company</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>Previous Jobs Held In</th>
+        </tr>
+        {% for contact in contacts %}
+            <tr>
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.company }}</td>
+                <td>{{ contact.city }}</td>
+                <td>{{ contact.country }}</td>
+                <td>{{ contact.job_history }}</td>
+            </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>
